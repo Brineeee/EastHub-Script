@@ -96,7 +96,11 @@ end)
 ```
 # Label
 
--Creating a Label
+- Creating a Label
 ```html
 Tab1:Label("Example Label")
 ```
+-----
+ # Note
+
+- The only creator is mech#0945 or Yamete#22
