@@ -26,7 +26,7 @@ local win = Library:CreateWindow()
 local Tab1 = win:CreateTab("Tab 1")
 ```
 
-# Notification
+# Notifications
 
 - Creating a notification
 ```html
