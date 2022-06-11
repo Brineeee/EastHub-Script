@@ -24,6 +24,7 @@ https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua"))() 
 local win = Library:CreateWindow()
 local Tab1 = win:CreateTab("Tab 1")
+```
 
 # Notification
 
