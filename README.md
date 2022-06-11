@@ -47,7 +47,7 @@ end)
 - Creating a Toggle
 ```html
 Tab1:Toggle("Example Toggle", function(sssss)
-	print()
+	print(sssss)
 end)
 ```
 
@@ -56,7 +56,7 @@ end)
 - Creating a Another Toggle
 ```html
 Tab1:Toggle2("Example Toggle", function(sssss)
-	print()
+	print(sssss)
 end)
 ```
 
@@ -103,4 +103,4 @@ Tab1:Label("Example Label")
 -----
  # Note
 
-- The only creator is mech#0945 or Yamete#22
+- The only creator is mech#0945 or Yamete#2273 
