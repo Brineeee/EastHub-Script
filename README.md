@@ -100,6 +100,41 @@ end)
 ```html
 Tab1:Label("Example Label")
 ```
+
+# Full Lib
+
+```html
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua"))()
+
+local win = Library:CreateWindow()
+local Tab1 = win:CreateTab("Tab 1")
+
+Tab1:Button("Example Notification", function() 
+Tab1:CreateNotification("Notification Title", "Notification Description", 10)
+end) 
+
+Tab1:Button("Example Button", function()
+	print()
+end)
+
+Tab1:Toggle("Example Toggle", function(sssss)
+	print()
+end)
+
+Tab1:Toggle2("Example Another Toggle", function() 
+        print()
+end)
+ 
+Tab1:Textbox("Example Textbox","Type", function() 
+    print() 
+end) 
+
+Tab1:Dropdown("Example Dropdown", {"Option1", "Option2"},function()
+    print() 
+end) 
+
+Tab1:Label("Example Label")
+```
 -----
  # Note
 
