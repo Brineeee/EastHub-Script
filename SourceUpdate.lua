@@ -1,6 +1,6 @@
 local Library = {} 
 
-do
+do --/Destroy East
     local ui = game:GetService("CoreGui"):FindFirstChild("East")
 	if ui then ui:Destroy()
 	end
@@ -10,8 +10,8 @@ function Library:CreateWindow()
 	
 	local East = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
-  local Togglee = Instance.new("TextButton") 
-  local UI = Instance.new("TextButton")
+    local Togglee = Instance.new("TextButton") 
+    local UI = Instance.new("TextButton")
 	local mainCorner = Instance.new("UICorner")
 	local SideBar = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
@@ -26,35 +26,35 @@ function Library:CreateWindow()
 	East.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	East.ResetOnSpawn = false
 
-  Togglee.Name = "Togglee"
-  Togglee.Parent = East
-  Togglee.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-  Togglee.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-  Togglee.Size = UDim2.new(0, 50, 0, 50)
-  Togglee.Font = Enum.Font.Code
-  Togglee.Text = "E"
-  Togglee.TextColor3 = Color3.fromRGB(255, 0, 0)
-  Togglee.TextScaled = true
-  Togglee.MouseButton1Down:connect(function()
-  MainFrame.Visible = false
-  Togglee.Visible = false
-  UI.Visible = true
-  end)  
+    Togglee.Name = "Togglee"
+    Togglee.Parent = East
+    Togglee.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    Togglee.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+    Togglee.Size = UDim2.new(0, 50, 0, 50)
+    Togglee.Font = Enum.Font.Gotham
+    Togglee.Text = "UI"
+    Togglee.TextColor3 = Color3.fromRGB(255, 0, 0)
+    Togglee.TextScaled = true
+    Togglee.MouseButton1Down:connect(function()
+    MainFrame.Visible = false
+    Togglee.Visible = false
+    UI.Visible = true
+    end)  
 
-  UI.Name = "UI"
-  UI.Parent = East
-  UI.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-  UI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-  UI.Size = UDim2.new(0, 50, 0, 50)
-  UI.Font = Enum.Font.Code
-  UI.Text = "E"
-  UI.TextColor3 = Color3.fromRGB(255, 0, 0)
-  UI.TextScaled = true
-  UI.MouseButton1Down:connect(function()
-  MainFrame.Visible = true
-  UI.Visible = false
-  Togglee.Visible = true
-  end) 
+    UI.Name = "UI"
+    UI.Parent = East
+    UI.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+    UI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+    UI.Size = UDim2.new(0, 50, 0, 50)
+    UI.Font = Enum.Font.Gotham
+    UI.Text = "UI"
+    UI.TextColor3 = Color3.fromRGB(255, 0, 0)
+    UI.TextScaled = true
+    UI.MouseButton1Down:connect(function()
+    MainFrame.Visible = true
+    UI.Visible = false
+    Togglee.Visible = true
+    end) 
 
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = East
@@ -173,25 +173,26 @@ coroutine.wrap(DGZPFEN_fake_script)()
 		tabButton.BackgroundColor3 = Color3.fromRGB(100, 0, 0)
 		tabButton.Size = UDim2.new(0, 106, 0, 20)
 		tabButton.Font = Enum.Font.Gotham
-		tabButton.Text = tabname
+		tabButton.Text = tabname -- Displays our custom text
 		tabButton.TextColor3 = Color3.fromRGB(10, 10, 10)
 		tabButton.TextSize = 14.000
 		tabButton.AutoButtonColor = false	
 		tabButton.MouseButton1Click:Connect(function()
 			for i,v in next, pagesFolder:GetChildren() do -- We get all the pages that we added
-				v.Visible = false	
+				v.Visible = false	-- then we make them invisible 
 			end 
-			newPage.Visible = true	
+			newPage.Visible = true	-- We make current page visible but not others
 			
-			for i,v in next, allTabs:GetChildren() do	
-				if v:IsA("TextButton") then
+			--Animations Below  -- Optional
+			for i,v in next, allTabs:GetChildren() do	-- We get all the elements inside the frame
+				if v:IsA("TextButton") then -- We can't animate UIListLayout, so we check if its a TextButton
 					game.TweenService:Create(v, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
 						BackgroundColor3 = Color3.fromRGB(150, 0, 0) -- We animate other Tab Buttons and making the current one seem Checked
 					}):Play()
 				end
 			end
 			game.TweenService:Create(tabButton, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
-				BackgroundColor3 = Color3.fromRGB(230, 0, 0) 
+				BackgroundColor3 = Color3.fromRGB(230, 0, 0) -- We animate other Tab Buttons and making the current one seem Checked
 			}):Play()
 		end)
 
@@ -218,8 +219,8 @@ coroutine.wrap(DGZPFEN_fake_script)()
 		local ElementHandler = {}
 		
 function ElementHandler:CreateNotification(text, desc, durat)
-local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub/main/NotificationModules"))()
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub/main/Notification"))()
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
 
 Notification:Notify(
     {Title = text, Description = desc},
@@ -267,21 +268,21 @@ end
             local ToggleF = Instance.new("Frame")
 
             ToggleFrame.Name = tostring(Name).."_Toggle"
-            ToggleFrame.Parent = Tab
-            ToggleFrame.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+            ToggleFrame.Parent = newPage
+            ToggleFrame.BackgroundColor3 = Color3.fromRGB(44, 48, 53)
             ToggleFrame.BorderSizePixel = 0
-            ToggleFrame.Size = UDim2.new(0, 408, 0, 35)
+            ToggleFrame.Size = UDim2.new(0, 350, 0, 32)
 
             ToggleName.Name = "ToggleName"
             ToggleName.Parent = ToggleFrame
-            ToggleName.BackgroundColor3 = Color3.fromRGB(40, 42, 60)
+            ToggleName.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
             ToggleName.BackgroundTransparency = 1.000
             ToggleName.BorderSizePixel = 0
             ToggleName.Size = UDim2.new(0, 347, 0, 35)
             ToggleName.Font = Enum.Font.Gotham
             ToggleName.Text = Name
             ToggleName.TextColor3 = Color3.fromRGB(255, 255, 255)
-            ToggleName.TextSize = 16.000
+            ToggleName.TextSize = 14.000
             ToggleName.TextXAlignment = Enum.TextXAlignment.Left
 
             ToggleNamePadding.Name = "ToggleNamePadding"
@@ -293,7 +294,7 @@ end
 
             ToggleF.Name = "ToggleF"
             ToggleF.Parent = ToggleFrame
-            ToggleF.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
+            ToggleF.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
             ToggleF.BackgroundTransparency = 0
             ToggleF.BorderSizePixel = 0
             ToggleF.Position = UDim2.new(0.867647052, 0, 0.142857149, 0)
@@ -305,7 +306,7 @@ end
 
             ToggleButton.Name = "ToggleButton"
             ToggleButton.Parent = ToggleF
-            ToggleButton.BackgroundColor3 = Color3.fromRGB(55, 55, 75)
+            ToggleButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
             ToggleButton.BackgroundTransparency = 1
             ToggleButton.BorderSizePixel = 0
             ToggleButton.Size = UDim2.new(0, 45, 0, 23)
@@ -328,10 +329,10 @@ end
             ToggleButton.MouseButton1Down:Connect(function()
                 ToggleEnabled = not ToggleEnabled
                 if ToggleEnabled then 
-                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 74, 251)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(255, 0, 0)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.559, 0,0.153, 0)}):Play() 
                 else
-                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(55, 55, 75)}):Play() 
+                    game:GetService("TweenService"):Create(ToggleF, TweenInfo.new(0.3), {BackgroundColor3 = Color3.fromRGB(150, 0, 0)}):Play() 
                     game:GetService("TweenService"):Create(ToggleCircle, TweenInfo.new(0.3), {Position = UDim2.new(0.093, 0,0.153, 0)}):Play() 
                 end
                 pcall(Callback,ToggleEnabled)
@@ -546,7 +547,7 @@ end
             SliderName.Font = Enum.Font.Gotham
             SliderName.Text = Name
             SliderName.TextColor3 = Color3.fromRGB(255, 255, 255)
-            SliderName.TextSize = 16.000
+            SliderName.TextSize = 14.000
             SliderName.TextXAlignment = Enum.TextXAlignment.Left
 
             SliderNamePadding.Name = "SliderNamePadding"
@@ -564,7 +565,7 @@ end
             SliderValue.Font = Enum.Font.Gotham
             SliderValue.Text = "Value"
             SliderValue.TextColor3 = Color3.fromRGB(255, 255, 255)
-            SliderValue.TextSize = 16.000
+            SliderValue.TextSize = 14.000
             SliderValue.TextXAlignment = Enum.TextXAlignment.Right
 
             SliderValuePadding.Name = "SliderValuePadding"
@@ -697,7 +698,7 @@ end
                                     dropdownItem1.Position = UDim2.new(0.0250000004, 0, 0.0933333358, 0)
                                     dropdownItem1.Size = UDim2.new(0, 350, 0, 32)
                                     dropdownItem1.ZIndex = 2
-                                    dropdownItem1.Font = Enum.Font.GothamSemibold
+                                    dropdownItem1.Font = Enum.Font.Gotham
                                     dropdownItem1.Text = dropInfo
                                     dropdownItem1.TextColor3 = Color3.fromRGB(255, 255, 255)
                                     dropdownItem1.TextSize = 14.000
@@ -737,7 +738,7 @@ end
                                         optionBtn1.Size = UDim2.new(0, 350, 0, 32)
                                         optionBtn1.ZIndex = 2
                                         optionBtn1.AutoButtonColor = false
-                                        optionBtn1.Font = Enum.Font.GothamSemibold
+                                        optionBtn1.Font = Enum.Font.Gotham
                                         optionBtn1.Text = "  "..v
                                         optionBtn1.TextColor3 = Color3.fromRGB(255, 255, 255)
                                         optionBtn1.TextSize = 14.000
@@ -821,7 +822,7 @@ function ElementHandler:Keybind(Name,xKey,Callback)
             KeybindName.Font = Enum.Font.Gotham
             KeybindName.Text = Name
             KeybindName.TextColor3 = Color3.fromRGB(255, 255, 255)
-            KeybindName.TextSize = 16.000
+            KeybindName.TextSize = 14.000
             KeybindName.TextXAlignment = Enum.TextXAlignment.Left
             
             KeybindNamePadding.Name = "KeybindNamePadding"
