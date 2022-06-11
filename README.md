@@ -15,13 +15,13 @@
 
 - You can only get the source here
 ```html
-https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua
+https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/SourceUpdate.lua
 ```
 # Library - Window - Tab
 
 - Creating a library window and tab
 ```html
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua"))() 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/SourceUpdate.lua"))() 
 local win = Library:CreateWindow()
 local Tab1 = win:CreateTab("Tab 1")
 ```
@@ -104,7 +104,7 @@ Tab1:Label("Example Label")
 # Full Lib
 
 ```html
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/Source.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Brineeee/EastHub-Script/main/SourceUpdate.lua"))()
 
 local win = Library:CreateWindow()
 local Tab1 = win:CreateTab("Tab 1")
