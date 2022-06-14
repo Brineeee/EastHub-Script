@@ -1,0 +1,261 @@
+-- Old UI Library of EastHub ( this is actually a Hanime Library but edited and add Toggle and space! )
+
+local Library = {}
+
+do --/Destroy East
+    local ui = game:GetService("CoreGui"):FindFirstChild("East-Old")
+	if ui then ui:Destroy()
+	end
+end
+	
+function Library:Create(Name)
+local Main = Instance.new("ScreenGui")
+local Container = Instance.new("Frame")
+local Bar = Instance.new("Frame")
+local Tab = Instance.new("TextLabel")
+local Close = Instance.new("ImageButton")
+local Categories = Instance.new("Frame")
+local Category = Instance.new("ScrollingFrame")
+
+local UIPadding = Instance.new("UIPadding")
+local UIGridLayout = Instance.new("UIGridLayout")
+
+--Properties:
+
+Main.Name = "East-Old"
+Main.Parent = game.CoreGui
+
+
+Container.Name = "Container"
+Container.Parent = Main
+Container.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Container.BorderColor3 = Color3.fromRGB(10, 10, 10)
+Container.Position = UDim2.new(0.299270064, 0, 0.328075707, 0)
+Container.Size = UDim2.new(0, 452, 0, 274)
+
+Bar.Name = "Bar"
+Bar.Parent = Container
+Bar.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Bar.BorderColor3 = Color3.fromRGB(10, 10, 10)
+Bar.Size = UDim2.new(0, 452, 0, 33)
+
+Tab.Name = "Tab"
+Tab.Parent = Bar
+Tab.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Tab.BackgroundTransparency = 1
+Tab.Size = UDim2.new(0, 155, 0, 33)
+Tab.Font = Enum.Font.ArialBold
+Tab.Text = Name
+Tab.TextColor3 = Color3.new(0.921569, 0.921569, 0.921569)
+Tab.TextSize = 14.00
+Tab.TextXAlignment = Enum.TextXAlignment.Left
+
+Close.Name = "Close"
+Close.Parent = Bar
+Close.BackgroundColor3 = Color3.new(1, 1, 1)
+Close.BackgroundTransparency = 1
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.940265477, 0, 0.0909090936, 0)
+Close.Size = UDim2.new(0, 27, 0, 27)
+Close.Image = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"
+
+Categories.Name = "Categories"
+Categories.Parent = Container
+Categories.BackgroundColor3 = Color3.new(1, 1, 1)
+Categories.BackgroundTransparency = 1
+Categories.Position = UDim2.new(0, 0, 0.120437957, 0)
+Categories.Size = UDim2.new(0, 452, 0, 99999)
+
+Category.Name = "Category"
+Category.Parent = Categories
+Category.Active = true
+Category.BackgroundColor3 = Color3.new(1, 1, 1)
+Category.BackgroundTransparency = 1
+Category.BorderSizePixel = 0
+Category.Size = UDim2.new(0, 452, 0, 241)
+Category.ScrollBarThickness = 0
+
+UIPadding.Parent = Category
+UIPadding.PaddingLeft = UDim.new(0, 15)
+UIPadding.PaddingTop = UDim.new(0, 10)
+
+UIGridLayout.Parent = Category
+UIGridLayout.CellSize = UDim2.new(0, 420, 0, 28)
+
+local function MVJQRKJ_fake_script() -- Close.LocalScript 
+	local script = Instance.new('LocalScript', Close)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.Parent.ClipsDescendants = true
+		script.Parent.Parent.Parent:TweenSize(UDim2.new(0,0,0,0),"In","Linear",0.5,false,nil)
+		wait(0.5)
+		script.Parent.Parent.Parent.Visible = false
+	end)
+end
+coroutine.wrap(MVJQRKJ_fake_script)()
+
+--// Smooth Draggable \\--
+local function DGZPFEN_fake_script() -- Container.LocalScript 
+	local script = Instance.new('LocalScript', Container)
+
+	local players = game:service('Players');
+	local player = players.LocalPlayer;
+	local mouse = player:GetMouse();
+	local run = game:service('RunService');
+	local stepped = run.Stepped;
+	draggable = function(obj)
+		spawn(function()
+			obj.Active = true;
+			local minitial;
+			local initial;
+			local isdragging;
+			obj.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+					isdragging = true;
+					minitial = input.Position;
+					initial = obj.Position;
+					local con;
+					con = stepped:Connect(function()
+						if isdragging then
+							local delta = Vector3.new(mouse.X, mouse.Y, 0) - minitial;
+							obj.Position = UDim2.new(initial.X.Scale, initial.X.Offset + delta.X, initial.Y.Scale, initial.Y.Offset + delta.Y);
+						else
+							con:Disconnect();
+						end;
+					end);
+					input.Changed:Connect(function()
+						if input.UserInputState == Enum.UserInputState.End then
+							isdragging = false;
+						end;
+					end);
+				end;
+			end);
+		end)
+	end;
+	
+	draggable(script.Parent)
+end
+coroutine.wrap(DGZPFEN_fake_script)()
+
+local Element = {}
+
+function Element:Button(text, callback)
+ 
+callback = callback or function() end
+ 
+local Button = Instance.new("TextButton")
+ 
+Button.Name = "Button"
+Button.Parent = Category
+Button.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Button.BorderColor3 = Color3.fromRGB(255,255,255)
+Button.Size = UDim2.new(0, 200, 0, 50)
+Button.Font = Enum.Font.Gotham
+Button.TextColor3 = Color3.fromRGB(255,255,255)
+Button.TextSize = 15
+Button.Text = text or "Button"
+Button.MouseButton1Click:Connect(function() 
+    pcall(callback)
+         end)
+     end
+ 
+function Element:Label(text)
+ 
+local Label = Instance.new("TextLabel")
+ 
+Label.Name = "Label"
+Label.Parent = Category
+Label.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Label.BorderColor3 = Color3.fromRGB(255,255,255)
+Label.Size = UDim2.new(0, 200, 0, 50)
+Label.Font = Enum.Font.Gotham
+Label.TextColor3 = Color3.fromRGB(255,255,255)
+Label.TextSize = 15
+Label.Text = text or "Label"
+      end 
+
+function Element:Blank(newText)
+
+local Space = Instance.new("TextLabel")
+
+Space.Name = "Space"
+Space.Parent = Category
+Space.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Space.BorderColor3 = Color3.fromRGB(0,0,0)
+Space.Size = UDim2.new(0, 200, 0, 20)
+Space.Font = Enum.Font.Gotham
+Space.TextColor3 = Color3.fromRGB(255,255,255)
+Space.TextSize = 15
+Space.Text = "-- ".. newText .." --"
+     end
+     
+		function Element:Toggle(togInfo, callback)
+			togInfo = togInfo or "Toggle"
+			callback = callback or function() end	
+
+			local toggleButton = Instance.new("TextButton")
+			local toggleButtonCover = Instance.new("UICorner")
+			local toggle = Instance.new("Frame")
+			local toggleCorner = Instance.new("UICorner")
+			local toggleInfo = Instance.new("TextLabel")
+
+			toggleButton.Name = "toggleButton"
+			toggleButton.Parent = Category
+			toggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			toggleButton.BorderColor3 = Color3.fromRGB(255,255,255)
+			toggleButton.Position = UDim2.new(0.0245098043, 0, 0, 0)
+			toggleButton.Size = UDim2.new(0, 350, 0, 32)
+			toggleButton.AutoButtonColor = false
+			toggleButton.Font = Enum.Font.Gotham
+			toggleButton.Text = ""
+			toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			toggleButton.TextSize = 15
+
+			toggleButtonCover.CornerRadius = UDim.new(0, 0)
+			toggleButtonCover.Name = "toggleButtonCover"
+			toggleButtonCover.Parent = toggleButton
+
+			toggle.Name = "toggle"
+			toggle.Parent = toggleButton
+			toggle.BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+			toggle.Position = UDim2.new(0.0240549836, 0, 0.15625, 0)
+			toggle.Size = UDim2.new(0, 22, 0, 22)
+
+			toggleCorner.CornerRadius = UDim.new(0, 10)
+			toggleCorner.Name = "toggleCorner"
+			toggleCorner.Parent = toggle
+
+			toggleInfo.Name = "toggleInfo"
+			toggleInfo.Parent = toggleButton
+			toggleInfo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			toggleInfo.BackgroundTransparency = 1.000
+			toggleInfo.Position = UDim2.new(0.130584195, 0, 0, 0)
+			toggleInfo.Size = UDim2.new(0, 230, 0, 32)
+			toggleInfo.Font = Enum.Font.Gotham
+			toggleInfo.Text = togInfo --- We set our custom text here
+			toggleInfo.TextColor3 = Color3.fromRGB(255, 255, 255)
+			toggleInfo.TextSize = 15
+			toggleInfo.TextXAlignment = Enum.TextXAlignment.Left
+			
+			local tog = false
+			
+			toggleButton.MouseButton1Click:Connect(function()
+				tog = not tog
+				callback(tog) -- Callbacks whenever we toggle
+				if tog then 
+					game.TweenService:Create(toggle, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+						BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+					}):Play()
+					--- We put our animation here when the toggle is on
+				else
+					game.TweenService:Create(toggle, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+						BackgroundColor3 = Color3.fromRGB(200, 200, 200)
+					}):Play()
+					---We Put our animation here when the toggle is off
+				end
+			end)
+		end
+	--end
+return Element
+end
+return Library
