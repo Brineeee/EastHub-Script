@@ -10,8 +10,8 @@ function Library:CreateWindow()
 	
 	local East = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
-    local Togglee = Instance.new("TextButton") 
-    local UI = Instance.new("TextButton")
+        local Togglee = Instance.new("TextButton") 
+        local UI = Instance.new("TextButton")
 	local mainCorner = Instance.new("UICorner")
 	local SideBar = Instance.new("Frame")
 	local sideCorner = Instance.new("UICorner")
@@ -99,7 +99,7 @@ function Library:CreateWindow()
 	allPages.Parent = MainFrame
 	allPages.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 	allPages.Position = UDim2.new(0.274418592, 0, 0.0269230772, 0)
-	allPages.Size = UDim2.new(0, 370, 0, 340)
+	allPages.Size = UDim2.new(0, 370, 0, 999)
 
 	mainCorner_2.CornerRadius = UDim.new(0, 3)
 	mainCorner_2.Name = "mainCorner"
